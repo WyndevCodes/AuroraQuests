@@ -15,10 +15,10 @@ public class LuckPermsHook implements Hook {
     public void hook(AuroraQuests plugin) {
         this.plugin = plugin;
 
-        plugin.getQuestManager().getRewardFactory()
+        plugin.getPoolManager().getRewardFactory()
                 .registerRewardType(NamespacedId.fromDefault("permission"), PermissionReward.class);
 
-        plugin.getQuestManager().getRewardAutoCorrector()
+        plugin.getPoolManager().getRewardAutoCorrector()
                 .registerCorrector(NamespacedId.fromDefault("permission"), new PermissionCorrector());
 
         var lp = LuckPermsProvider.get();
@@ -32,8 +32,14 @@ public class LuckPermsHook implements Hook {
     private synchronized void onDataRecalculate(UserDataRecalculateEvent event) {
         var player = Bukkit.getPlayer(event.getUser().getUniqueId());
         if (player != null) {
-            plugin.getQuestManager().tryUnlockQuestPools(player);
-            plugin.getQuestManager().tryStartGlobalQuests(player);
+            var profile = plugin.getProfileManager().getProfile(player);
+            if (profile != null) {
+                for (var pool : profile.getQuestPools()) {
+                    pool.unlock(false);
+                    pool.startQuests();
+                    pool.rollIfNecessary(true);
+                }
+            }
         }
     }
 }

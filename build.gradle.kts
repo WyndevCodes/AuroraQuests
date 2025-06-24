@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import xyz.jpenilla.runtask.task.AbstractRun
 import groovy.util.Node
 import groovy.util.NodeList
 import java.net.URI
@@ -17,10 +18,11 @@ plugins {
     id("java")
     id("com.gradleup.shadow") version "8.3.3"
     id("maven-publish")
+    id("xyz.jpenilla.run-paper") version "2.3.0"
 }
 
 group = "gg.auroramc"
-version = "1.4.1"
+version = "2.0.0-SNAPSHOT"
 
 repositories {
     flatDir {
@@ -114,6 +116,13 @@ tasks {
     build {
         dependsOn(shadowJar)
     }
+    runServer {
+        downloadPlugins {
+            modrinth("AuroraLib", "2.3.1")
+            hangar("PlaceholderAPI", "2.11.6")
+        }
+        minecraftVersion("1.21.6")
+    }
 }
 
 val publishing = loadProperties("publish.properties")
@@ -153,4 +162,15 @@ publishing {
             }
         }
     }
+}
+
+tasks.withType<AbstractRun>().configureEach {
+//    javaLauncher = javaToolchains.launcherFor {
+//        vendor.set(JvmVendorSpec.JETBRAINS)
+//        languageVersion.set(JavaLanguageVersion.of(21))
+//    }
+    jvmArgs(
+        // "-XX:+AllowEnhancedClassRedefinition", //
+        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" // Enable remote debugging
+    )
 }

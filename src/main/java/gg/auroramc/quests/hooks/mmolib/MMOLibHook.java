@@ -7,10 +7,10 @@ import gg.auroramc.quests.hooks.Hook;
 public class MMOLibHook implements Hook {
     @Override
     public void hook(AuroraQuests plugin) {
-        plugin.getQuestManager().getRewardFactory()
+        plugin.getPoolManager().getRewardFactory()
                 .registerRewardType(NamespacedId.fromDefault("mmo_stat"), MMOStatReward.class);
 
-        plugin.getQuestManager().getRewardAutoCorrector()
+        plugin.getPoolManager().getRewardAutoCorrector()
                 .registerCorrector(NamespacedId.fromDefault("mmo_stat"), new MMOStatCorrector(plugin));
     }
 }
