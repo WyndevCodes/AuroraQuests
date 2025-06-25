@@ -11,6 +11,7 @@ import gg.auroramc.quests.hooks.luckperms.LuckPermsHook;
 import gg.auroramc.quests.hooks.mmolib.MMOLibHook;
 import gg.auroramc.quests.hooks.mythicdungeons.DungeonsHook;
 import gg.auroramc.quests.hooks.mythicmobs.MythicHook;
+import gg.auroramc.quests.hooks.nexo.NexoHook;
 import gg.auroramc.quests.hooks.shopguiplus.ShopGUIPlusHook;
 import gg.auroramc.quests.hooks.shopkeepers.ShopkeepersHook;
 import gg.auroramc.quests.hooks.superiorskyblock.SuperiorSkyblockHook;
@@ -38,7 +39,8 @@ public enum Hooks {
     ADYESHACH(AdyeshachHook.class, "Adyeshach"),
     SUPERIOR_SKYBLOCK(SuperiorSkyblockHook.class, "SuperiorSkyblock2"),
     FANCY_NPCS(FancyNPCsHook .class, "FancyNpcs"),
-    ZNPCS(ZnpcsHook.class, "ServersNPC");
+    ZNPCS(ZnpcsHook.class, "ServersNPC"),
+    NEXO(NexoHook.class, "Nexo");
 
     private final Class<? extends Hook> clazz;
     private final Set<String> plugins;
