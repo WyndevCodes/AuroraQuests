@@ -15,7 +15,7 @@ public class TameObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EntityTameEvent.class, this::handle, EventPriority.MONITOR);
     }
 

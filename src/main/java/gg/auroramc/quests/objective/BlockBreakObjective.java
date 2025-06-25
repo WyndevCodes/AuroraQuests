@@ -16,7 +16,7 @@ public class BlockBreakObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(RegionBlockBreakEvent.class, this::onBlockBreak, EventPriority.MONITOR);
         onEvent(PlayerBreakCustomBlockEvent.class, this::onBlockBreak, EventPriority.MONITOR);
     }

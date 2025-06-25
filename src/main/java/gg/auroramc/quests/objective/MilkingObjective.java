@@ -24,7 +24,7 @@ public class MilkingObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerInteractEntityEvent.class, this::onMilk, EventPriority.MONITOR);
     }
 

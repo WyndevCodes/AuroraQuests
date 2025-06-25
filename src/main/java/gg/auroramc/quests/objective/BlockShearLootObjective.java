@@ -15,7 +15,7 @@ public class BlockShearLootObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerShearBlockEvent.class, this::handle, EventPriority.MONITOR);
     }
 

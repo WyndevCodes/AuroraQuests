@@ -20,7 +20,7 @@ public class EnchantObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EnchantItemEvent.class, this::onEnchant, EventPriority.MONITOR);
     }
 

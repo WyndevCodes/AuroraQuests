@@ -14,7 +14,7 @@ public class GainAuroraLevelObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerLevelUpEvent.class, this::handle, EventPriority.MONITOR);
     }
 

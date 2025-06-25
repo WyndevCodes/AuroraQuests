@@ -42,4 +42,5 @@ public class ObjectiveType {
     public static final String REACH_ISLAND_LEVEL = "REACH_ISLAND_LEVEL";
     public static final String UPGRADE_ISLAND = "UPGRADE_ISLAND";
     public static final String COMPLETE_DUNGEON = "COMPLETE_DUNGEON";
+    public static final String PLACEHOLDER = "PLACEHOLDER";
 }

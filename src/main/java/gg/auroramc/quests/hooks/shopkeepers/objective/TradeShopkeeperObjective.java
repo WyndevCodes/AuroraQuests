@@ -15,7 +15,7 @@ public class TradeShopkeeperObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(ShopkeeperTradeEvent.class, this::handle, EventPriority.MONITOR);
     }
 

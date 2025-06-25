@@ -31,6 +31,7 @@ public abstract class Objective extends EventBus {
     protected final Quest quest;
     protected final double target;
     protected final Profile.TaskDataWrapper data;
+    protected boolean started = false;
 
     @Getter(AccessLevel.NONE)
     protected List<BukkitEventBus.Subscription> subscriptions;
@@ -127,11 +128,19 @@ public abstract class Objective extends EventBus {
             this.publish(EventType.TASK_PROGRESS, this);
             if (isCompleted()) {
                 this.publish(EventType.TASK_COMPLETED, this);
+                dispose();
             }
         }
     }
 
-    public abstract void start();
+    public void start() {
+        if (this.started) return;
+        if (isCompleted()) return;
+        this.activate();
+        started = true;
+    }
+
+    protected abstract void activate();
 
     public List<ObjectiveFilter> getFilters() {
         return new ArrayList<>();
@@ -151,6 +160,7 @@ public abstract class Objective extends EventBus {
             }
             tasks = null;
         }
+        started = false;
     }
 
     public void destroy() {
@@ -172,6 +182,7 @@ public abstract class Objective extends EventBus {
 
     public void complete(boolean silent) {
         data.setProgress(target);
+        dispose();
         if (!silent) this.publish(EventType.TASK_COMPLETED, this);
     }
 
@@ -179,6 +190,7 @@ public abstract class Objective extends EventBus {
         data.setProgress(Math.min(progress, target));
         this.publish(EventType.TASK_PROGRESS, this);
         if (isCompleted()) {
+            dispose();
             this.publish(EventType.TASK_COMPLETED, this);
         }
     }

@@ -14,7 +14,7 @@ public class IslandWorthObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerIslandWorthChangeEvent.class, this::handle, EventPriority.MONITOR);
     }
 

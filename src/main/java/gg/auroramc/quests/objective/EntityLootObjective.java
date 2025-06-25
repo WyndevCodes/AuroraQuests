@@ -18,7 +18,7 @@ public class EntityLootObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EntityDeathEvent.class, this::handle, EventPriority.MONITOR);
         onEvent(PlayerLootEvent.class, this::handleCustomLoot, EventPriority.MONITOR);
     }

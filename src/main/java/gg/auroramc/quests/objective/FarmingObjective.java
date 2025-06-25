@@ -31,7 +31,7 @@ public class FarmingObjective extends TypedObjective {
 
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerHarvestBlockEvent.class, this::onPlayerHarvest, EventPriority.MONITOR);
         onEvent(RegionBlockBreakEvent.class, this::onBlockBreak, EventPriority.MONITOR);
         onEvent(BlockDropItemEvent.class, this::onBlockDrop, EventPriority.MONITOR);

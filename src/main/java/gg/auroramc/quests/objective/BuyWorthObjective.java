@@ -14,7 +14,7 @@ public class BuyWorthObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerSpendOnPurchaseEvent.class, this::handle, EventPriority.MONITOR);
     }
 

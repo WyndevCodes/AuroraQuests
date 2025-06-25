@@ -36,7 +36,7 @@ public class BrewingObjective extends StringTypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(InventoryOpenEvent.class, this::onInventoryOpen, EventPriority.MONITOR);
         onEvent(BrewEvent.class, this::onBrew, EventPriority.MONITOR);
     }

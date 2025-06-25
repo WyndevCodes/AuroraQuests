@@ -14,7 +14,7 @@ public class IslandLevelObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerIslandLevelChangeEvent.class, this::handle, EventPriority.MONITOR);
     }
 

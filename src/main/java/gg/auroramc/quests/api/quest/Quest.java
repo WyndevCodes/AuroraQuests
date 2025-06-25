@@ -110,6 +110,7 @@ public class Quest extends EventBus {
     public void reset() {
         for (var obj : objectives) {
             obj.resetProgress();
+            if (started) obj.start();
         }
         data.reset();
     }

@@ -23,7 +23,7 @@ public class ConsumeObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerItemConsumeEvent.class, this::handle, EventPriority.MONITOR);
     }
 

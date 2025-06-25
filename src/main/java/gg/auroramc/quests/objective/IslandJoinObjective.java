@@ -14,7 +14,7 @@ public class IslandJoinObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerJoinIslandEvent.class, this::handle, EventPriority.MONITOR);
     }
 

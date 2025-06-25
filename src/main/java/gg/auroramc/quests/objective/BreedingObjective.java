@@ -17,7 +17,7 @@ public class BreedingObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EntityFertilizeEggEvent.class, this::onBreedEgg, EventPriority.MONITOR);
         onEvent(EntityBreedEvent.class, this::onBreed, EventPriority.MONITOR);
     }

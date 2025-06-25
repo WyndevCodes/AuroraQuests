@@ -18,7 +18,7 @@ public class MobKillObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EntityDeathEvent.class, this::handle, EventPriority.MONITOR);
         onEvent(PlayerKillMobEvent.class, this::onCustomMobKill, EventPriority.MONITOR);
     }

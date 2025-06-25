@@ -14,7 +14,7 @@ public class SellWorthObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerEarnFromSellEvent.class, this::handle, EventPriority.MONITOR);
     }
 

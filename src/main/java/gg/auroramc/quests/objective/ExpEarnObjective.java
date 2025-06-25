@@ -14,7 +14,7 @@ public class ExpEarnObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerExpChangeEvent.class, this::handle, EventPriority.MONITOR);
     }
 

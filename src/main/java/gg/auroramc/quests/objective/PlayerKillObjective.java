@@ -16,7 +16,7 @@ public class PlayerKillObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(EntityDeathEvent.class, this::handle, EventPriority.MONITOR);
     }
 

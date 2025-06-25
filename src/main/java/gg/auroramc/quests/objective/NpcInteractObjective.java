@@ -14,7 +14,7 @@ public class NpcInteractObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerInteractNpcEvent.class, this::handle, EventPriority.MONITOR);
     }
 

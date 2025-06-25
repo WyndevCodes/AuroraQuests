@@ -14,7 +14,7 @@ public class GainAuraSkillsXpObjective extends StringTypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(XpGainEvent.class, this::handle, EventPriority.MONITOR);
     }
 

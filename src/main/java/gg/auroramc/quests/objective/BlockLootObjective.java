@@ -30,7 +30,7 @@ public class BlockLootObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(BlockDropItemEvent.class, this::onBlockDrop, EventPriority.MONITOR);
         onEvent(PlayerLootEvent.class, this::handleCustomLoot, EventPriority.MONITOR);
     }

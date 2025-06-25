@@ -17,7 +17,7 @@ public class TakeItemObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerTakeItemEvent.class, this::handle, EventPriority.MONITOR);
     }
 

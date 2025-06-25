@@ -14,7 +14,7 @@ public class IslandUpgradeObjective extends StringTypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerUpgradeIslandEvent.class, this::handle, EventPriority.MONITOR);
     }
 

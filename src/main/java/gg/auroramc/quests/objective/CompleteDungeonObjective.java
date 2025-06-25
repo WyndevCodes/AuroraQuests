@@ -19,7 +19,7 @@ public class CompleteDungeonObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerCompleteDungeonEvent.class, this::handle, EventPriority.MONITOR);
     }
 

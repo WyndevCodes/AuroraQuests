@@ -14,7 +14,7 @@ public class GainAuroraXpObjective extends Objective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerXpGainEvent.class, this::handle, EventPriority.MONITOR);
     }
 

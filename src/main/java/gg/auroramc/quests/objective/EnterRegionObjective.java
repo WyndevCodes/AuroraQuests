@@ -14,7 +14,7 @@ public class EnterRegionObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerEnterRegionEvent.class, this::handle, EventPriority.MONITOR);
     }
 

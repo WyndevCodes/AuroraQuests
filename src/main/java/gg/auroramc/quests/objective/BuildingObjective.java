@@ -20,7 +20,7 @@ public class BuildingObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(BlockPlaceEvent.class, this::onBlockPlace, EventPriority.MONITOR);
         onEvent(PlayerPlaceCustomBlockEvent.class, this::onBlockPlace, EventPriority.MONITOR);
         onEvent(RegionBlockBreakEvent.class, this::onBlockBreak, EventPriority.MONITOR);

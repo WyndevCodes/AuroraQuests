@@ -213,6 +213,7 @@ public class AuroraQuests extends JavaPlugin implements Listener {
         ObjectiveFactory.registerObjective(ObjectiveType.REACH_ISLAND_LEVEL, IslandLevelObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.UPGRADE_ISLAND, IslandUpgradeObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.TAKE_ITEM, TakeItemObjective.class);
+        ObjectiveFactory.registerObjective(ObjectiveType.PLACEHOLDER, PlaceholderObjective.class);
     }
 
     private void reloadUnlockTask() {

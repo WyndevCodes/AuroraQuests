@@ -14,7 +14,7 @@ public class InteractShopkeeperObjective extends StringTypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(ShopkeeperOpenUIEvent.class, this::handle, EventPriority.MONITOR);
     }
 

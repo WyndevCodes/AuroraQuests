@@ -14,7 +14,7 @@ public class ShearObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerShearEntityEvent.class, this::handle, EventPriority.MONITOR);
     }
 

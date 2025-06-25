@@ -20,7 +20,7 @@ public class SmeltObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(InventoryClickEvent.class, this::handle, EventPriority.MONITOR);
     }
 

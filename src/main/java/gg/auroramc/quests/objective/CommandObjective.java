@@ -14,7 +14,7 @@ public class CommandObjective extends StringTypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerCommandPreprocessEvent.class, this::handle, EventPriority.LOWEST, false);
     }
 

@@ -20,7 +20,7 @@ public class CraftObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(CraftItemEvent.class, this::onCraftItem, EventPriority.MONITOR);
         onEvent(PlayerCraftedItemEvent.class, this::onCraftItem, EventPriority.MONITOR);
     }

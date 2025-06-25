@@ -20,7 +20,7 @@ public class FishingObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerFishEvent.class, this::onFishCaught, EventPriority.MONITOR);
         onEvent(PlayerCaughtFishEvent.class, this::onFishCaught, EventPriority.MONITOR);
     }

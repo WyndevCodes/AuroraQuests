@@ -14,7 +14,7 @@ public class SellObjective extends TypedObjective {
     }
 
     @Override
-    public void start() {
+    protected void activate() {
         onEvent(PlayerSellItemEvent.class, this::handle, EventPriority.MONITOR);
     }
 
