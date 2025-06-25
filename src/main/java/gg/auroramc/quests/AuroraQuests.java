@@ -10,20 +10,20 @@ import gg.auroramc.quests.api.event.BukkitEventBus;
 import gg.auroramc.quests.api.event.QuestCompletedEvent;
 import gg.auroramc.quests.api.factory.ObjectiveFactory;
 import gg.auroramc.quests.api.objective.ObjectiveType;
-import gg.auroramc.quests.api.profile.Profile;
 import gg.auroramc.quests.api.profile.ProfileManager;
 import gg.auroramc.quests.api.questpool.Pool;
 import gg.auroramc.quests.api.questpool.PoolManager;
 import gg.auroramc.quests.command.CommandManager;
 import gg.auroramc.quests.config.ConfigManager;
 import gg.auroramc.quests.hooks.HookManager;
-import gg.auroramc.quests.objective.*;
 import gg.auroramc.quests.menu.PoolMenu;
+import gg.auroramc.quests.objective.*;
 import gg.auroramc.quests.parser.PoolParser;
 import gg.auroramc.quests.placeholder.QuestPlaceholderHandler;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import lombok.Getter;
 import org.bstats.bukkit.Metrics;
+import org.bstats.charts.AdvancedPie;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,9 +34,9 @@ import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 @Getter
@@ -129,7 +129,19 @@ public class AuroraQuests extends JavaPlugin implements Listener {
             }
         });
 
-        var metrics = new Metrics(this, 23779);
+        new Metrics(this, 23779).addCustomChart(new AdvancedPie("objective_type_distribution", () -> {
+            var data = new HashMap<String, Integer>();
+
+            for (var pool : poolManager.getPools()) {
+                for (var quest : pool.getDefinition().getQuests().values()) {
+                    for (var objective : quest.getTasks().values()) {
+                        data.merge(objective.getTask(), 1, Integer::sum);
+                    }
+                }
+            }
+
+            return data;
+        }));
     }
 
     public void reload() {
