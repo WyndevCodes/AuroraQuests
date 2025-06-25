@@ -192,6 +192,12 @@ public class QuestsCommand extends BaseCommand {
         }
 
         quest.reset();
+        if (pool.isGlobal()) {
+            quest.start(false);
+        } else if (pool.isRolledQuest(quest)) {
+            quest.start(false);
+        }
+
         if (!silent) {
             Chat.sendMessage(sender, plugin.getConfigManager().getMessageConfig().getQuestReset(), Placeholder.of("{player}", target.getName()), Placeholder.of("{quest}", questId));
         }

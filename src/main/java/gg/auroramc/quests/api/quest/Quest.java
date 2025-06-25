@@ -85,9 +85,7 @@ public class Quest extends EventBus {
         }
 
         for (var obj : objectives) {
-            if (!obj.isCompleted()) {
-                obj.start();
-            }
+            obj.start();
         }
 
         if (pool.isGlobal()) {

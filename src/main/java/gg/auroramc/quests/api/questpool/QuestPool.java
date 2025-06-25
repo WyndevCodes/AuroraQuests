@@ -82,6 +82,10 @@ public class QuestPool {
         return quests.values().stream().filter(Quest::isUnlocked).toList();
     }
 
+    public boolean isRolledQuest(Quest quest) {
+        return profile.getData().getPoolRollData(getId()).quests().contains(quest.getId());
+    }
+
     public List<Quest> getNotCompletedQuests() {
         if (!isTimedRandom()) {
             return quests.values().stream().filter(q -> !q.isCompleted()).toList();
@@ -100,6 +104,11 @@ public class QuestPool {
     public void resetAllQuestProgress() {
         for (var quest : quests.values()) {
             quest.reset();
+            if (isGlobal()) {
+                quest.start(false);
+            } else if (isRolledQuest(quest)) {
+                quest.start(false);
+            }
         }
     }
 
