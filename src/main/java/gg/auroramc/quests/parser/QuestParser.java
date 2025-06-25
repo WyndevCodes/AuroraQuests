@@ -51,7 +51,7 @@ public class QuestParser {
         LinkedHashMap<String, ObjectiveDefinition> tasks = new LinkedHashMap<>();
 
         for (String key : map.keySet()) {
-            tasks.put(key, TaskParser.parse(key, map.get(key)));
+            tasks.put(key, ObjectiveParser.parse(key, map.get(key)));
         }
 
         return tasks;

@@ -225,8 +225,10 @@ public class QuestPool {
         var data = profile.getData();
         var questIds = pickedQuests.values().stream().flatMap(List::stream).map(Quest::getId).toList();
 
-        for (var quest : getActiveQuests()) {
-            quest.dispose();
+        if (data.getPoolRollData(getId()) != null) {
+            for (var quest : getActiveQuests()) {
+                quest.dispose();
+            }
         }
 
         data.setRolledQuests(getId(), questIds);

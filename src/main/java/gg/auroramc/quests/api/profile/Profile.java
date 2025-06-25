@@ -42,11 +42,11 @@ public class Profile {
             data.put(pool.getId(), questPool);
             questPool.unlock(false);
 
-            questPool.startQuests();
-
             if (questPool.rollIfNecessary(false)) {
                 rolledPools.add(questPool);
             }
+
+            questPool.startQuests();
         }
 
         if (!rolledPools.isEmpty() && player.hasPlayedBefore()) {

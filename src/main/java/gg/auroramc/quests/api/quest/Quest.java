@@ -1,5 +1,7 @@
 package gg.auroramc.quests.api.quest;
 
+import gg.auroramc.aurora.api.AuroraAPI;
+import gg.auroramc.aurora.api.command.CommandDispatcher;
 import gg.auroramc.aurora.api.message.Placeholder;
 import gg.auroramc.aurora.api.reward.RewardExecutor;
 import gg.auroramc.quests.AuroraQuests;
@@ -38,10 +40,32 @@ public class Quest extends EventBus {
                 .toList();
 
         for (var obj : objectives) {
-            obj.subscribe(EventType.TASK_PROGRESS, objective -> this.publish(EventType.TASK_PROGRESS, objective));
+            obj.subscribe(EventType.TASK_PROGRESS, objective -> {
+                this.publish(EventType.TASK_PROGRESS, objective);
+                if (!objective.getDefinition().getOnProgress().isEmpty()) {
+                    List<Placeholder<?>> pl = List.of(
+                            Placeholder.of("{player}", data.profile().getPlayer().getName()),
+                            Placeholder.of("{progress_raw}", objective.getProgress()),
+                            Placeholder.of("{progress}", AuroraAPI.formatNumber(objective.getProgress())),
+                            Placeholder.of("{target_raw}", objective.getTarget()),
+                            Placeholder.of("{target}", AuroraAPI.formatNumber(objective.getTarget())),
+                            Placeholder.of("{percent}", AuroraAPI.formatNumber(objective.getProgress() / objective.getTarget() * 100))
+                    );
+                    for (var command : objective.getDefinition().getOnProgress()) {
+                        CommandDispatcher.dispatch(data.profile().getPlayer(), command, pl);
+                    }
+                }
+            });
 
             obj.subscribe(EventType.TASK_COMPLETED, objective -> {
                 this.publish(EventType.TASK_COMPLETED, objective);
+
+                if (!objective.getDefinition().getOnComplete().isEmpty()) {
+                    var pl = Placeholder.of("{player}", data.profile().getPlayer().getName());
+                    for (var command : objective.getDefinition().getOnComplete()) {
+                        CommandDispatcher.dispatch(data.profile().getPlayer(), command, pl);
+                    }
+                }
 
                 var completed = true;
 

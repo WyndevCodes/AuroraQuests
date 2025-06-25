@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TaskParser {
+public class ObjectiveParser {
     public static ObjectiveDefinition parse(String id, TaskConfig config) {
         return ObjectiveDefinition.builder()
                 .id(id)
@@ -20,6 +20,8 @@ public class TaskParser {
                 .task(config.getTask())
                 .args(config.getArgs())
                 .filters(parseFilters(config.getFilters()))
+                .onProgress(config.getOnProgress())
+                .onComplete(config.getOnComplete())
                 .build();
     }
 

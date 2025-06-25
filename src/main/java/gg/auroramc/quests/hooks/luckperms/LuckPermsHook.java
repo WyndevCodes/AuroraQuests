@@ -36,8 +36,8 @@ public class LuckPermsHook implements Hook {
             if (profile != null) {
                 for (var pool : profile.getQuestPools()) {
                     pool.unlock(false);
-                    pool.startQuests();
                     pool.rollIfNecessary(true);
+                    pool.startQuests();
                 }
             }
         }

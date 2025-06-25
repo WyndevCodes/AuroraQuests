@@ -44,6 +44,7 @@ repositories {
     maven("https://repo.tabooproject.org/repository/releases/")
     maven("https://repo.bg-software.com/repository/api/")
     maven("https://repo.nexomc.com/releases/")
+//    maven("https://repo.nightexpressdev.com/releases")
 }
 
 dependencies {
@@ -71,6 +72,7 @@ dependencies {
     compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-1")
     compileOnly("com.bgsoftware:SuperiorSkyblockAPI:2024.3")
     compileOnly("com.nexomc:nexo:1.8.0")
+//    compileOnly("su.nightexpress.excellentshop:ExcellentShop-spigot:4.17.1")
 
     implementation("co.aikar:acf-paper:0.5.1-SNAPSHOT")
     implementation("org.bstats:bstats-bukkit:3.0.2")

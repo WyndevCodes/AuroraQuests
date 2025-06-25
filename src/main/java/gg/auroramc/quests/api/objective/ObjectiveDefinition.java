@@ -15,4 +15,6 @@ public class ObjectiveDefinition {
     private final String display;
     private final ConfigurationSection args;
     private final List<ObjectiveFilter> filters;
+    private final List<String> onProgress;
+    private final List<String> onComplete;
 }

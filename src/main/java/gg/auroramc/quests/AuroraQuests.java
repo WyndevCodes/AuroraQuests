@@ -232,8 +232,8 @@ public class AuroraQuests extends JavaPlugin implements Listener {
             profileManager.getProfiles().forEach(profile -> {
                 for (var pool : profile.getQuestPools()) {
                     pool.unlock(false);
-                    pool.startQuests();
                     pool.rollIfNecessary(true);
+                    pool.startQuests();
                 }
             });
         }, cf.getInterval(), cf.getInterval(), TimeUnit.SECONDS);
@@ -263,8 +263,8 @@ public class AuroraQuests extends JavaPlugin implements Listener {
         var profile = profileManager.getProfile(event.getPlayer());
         for (var pool : profile.getQuestPools()) {
             pool.unlock(false);
-            pool.startQuests();
             pool.rollIfNecessary(true);
+            pool.startQuests();
         }
     }
 
