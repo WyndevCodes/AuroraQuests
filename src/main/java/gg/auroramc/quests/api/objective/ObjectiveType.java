@@ -44,4 +44,6 @@ public class ObjectiveType {
     public static final String COMPLETE_DUNGEON = "COMPLETE_DUNGEON";
     public static final String PLACEHOLDER = "PLACEHOLDER";
     public static final String ENTER_WORLD = "ENTER_WORLD";
+    public static final String DEAL_DAMAGE = "DEAL_DAMAGE";
+    public static final String BREAK_ITEM = "BREAK_ITEM";
 }
