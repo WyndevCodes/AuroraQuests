@@ -217,6 +217,7 @@ public class AuroraQuests extends JavaPlugin implements Listener {
         ObjectiveFactory.registerObjective(ObjectiveType.ENTER_WORLD, EnterWorldObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.DEAL_DAMAGE, DealDamageObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.BREAK_ITEM, BreakItemObjective.class);
+        ObjectiveFactory.registerObjective(ObjectiveType.WALK, WalkObjective.class);
     }
 
     private void reloadUnlockTask() {
