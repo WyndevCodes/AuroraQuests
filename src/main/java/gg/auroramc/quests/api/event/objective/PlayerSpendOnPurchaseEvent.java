@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @Getter
 public class PlayerSpendOnPurchaseEvent extends PlayerEvent {
@@ -23,9 +24,15 @@ public class PlayerSpendOnPurchaseEvent extends PlayerEvent {
     }
 
     private final double amount;
+    private final @Nullable String currency;
 
-    public PlayerSpendOnPurchaseEvent(@NotNull Player who, double amount) {
+    public PlayerSpendOnPurchaseEvent(@NotNull Player who, double amount, @Nullable String currency) {
         super(who, !Bukkit.isPrimaryThread());
         this.amount = amount;
+        this.currency = currency;
+    }
+
+    public PlayerSpendOnPurchaseEvent(@NotNull Player who, double amount) {
+        this(who, amount, null);
     }
 }

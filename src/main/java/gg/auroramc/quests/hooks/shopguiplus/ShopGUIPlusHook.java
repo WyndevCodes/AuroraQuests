@@ -34,18 +34,15 @@ public class ShopGUIPlusHook implements Hook, Listener {
 
         if (res.getShopAction() == ShopManager.ShopAction.BUY) {
             if (id != null) {
-                Bukkit.getPluginManager().callEvent(new PlayerSpendOnPurchaseEvent(res.getPlayer(), price));
                 Bukkit.getPluginManager().callEvent(new PlayerPurchaseItemEvent(res.getPlayer(), new PlayerPurchaseItemEvent.TransactionItem(id, res.getAmount())));
-            } else {
-                Bukkit.getPluginManager().callEvent(new PlayerSpendOnPurchaseEvent(res.getPlayer(), price));
             }
+            Bukkit.getPluginManager().callEvent(new PlayerSpendOnPurchaseEvent(res.getPlayer(), price));
+
         } else {
             if (id != null) {
-                Bukkit.getPluginManager().callEvent(new PlayerEarnFromSellEvent(res.getPlayer(), price));
                 Bukkit.getPluginManager().callEvent(new PlayerSellItemEvent(res.getPlayer(), new PlayerSellItemEvent.TransactionItem(id, res.getAmount())));
-            } else {
-                Bukkit.getPluginManager().callEvent(new PlayerEarnFromSellEvent(res.getPlayer(), price));
             }
+            Bukkit.getPluginManager().callEvent(new PlayerEarnFromSellEvent(res.getPlayer(), price));
         }
     }
 }

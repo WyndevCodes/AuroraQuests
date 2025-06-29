@@ -6,6 +6,7 @@ import gg.auroramc.quests.hooks.auroralevels.AuroraLevelsHook;
 import gg.auroramc.quests.hooks.citizens.CitizensHook;
 import gg.auroramc.quests.hooks.customfishing.CustomFishingHook;
 import gg.auroramc.quests.hooks.economyshopgui.EconomyShopGuiHook;
+import gg.auroramc.quests.hooks.excellentshop.ExcellentShopHook;
 import gg.auroramc.quests.hooks.fancynpcs.FancyNPCsHook;
 import gg.auroramc.quests.hooks.luckperms.LuckPermsHook;
 import gg.auroramc.quests.hooks.mmolib.MMOLibHook;
@@ -40,6 +41,7 @@ public enum Hooks {
     SUPERIOR_SKYBLOCK(SuperiorSkyblockHook.class, "SuperiorSkyblock2"),
     FANCY_NPCS(FancyNPCsHook .class, "FancyNpcs"),
     ZNPCS(ZnpcsHook.class, "ServersNPC"),
+    EXCELLENT_SHOP(ExcellentShopHook.class, "ExcellentShop"),
     NEXO(NexoHook.class, "Nexo");
 
     private final Class<? extends Hook> clazz;
