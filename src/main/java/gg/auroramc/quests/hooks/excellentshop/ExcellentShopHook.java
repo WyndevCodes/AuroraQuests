@@ -15,7 +15,7 @@ import su.nightexpress.nexshop.api.shop.type.TradeType;
 public class ExcellentShopHook implements Hook, Listener {
     @Override
     public void hook(AuroraQuests plugin) {
-
+        AuroraQuests.logger().info("Hooked into ExcellentShop for BUY_WORTH and SELL_WORTH objectives.");
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

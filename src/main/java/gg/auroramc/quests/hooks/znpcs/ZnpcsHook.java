@@ -8,6 +8,6 @@ public class ZnpcsHook implements Hook {
     @Override
     public void hook(AuroraQuests plugin) {
         Bukkit.getPluginManager().registerEvents(new ZnpcListener(), plugin);
-        AuroraQuests.logger().info("Hooked into ZNPCS for INTERACT_NPC task type");
+        AuroraQuests.logger().info("Hooked into ZNPCS for INTERACT_NPC objective.");
     }
 }

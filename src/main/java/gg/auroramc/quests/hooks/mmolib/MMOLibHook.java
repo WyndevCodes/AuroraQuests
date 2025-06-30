@@ -12,5 +12,7 @@ public class MMOLibHook implements Hook {
 
         plugin.getPoolManager().getRewardAutoCorrector()
                 .registerCorrector(NamespacedId.fromDefault("mmo_stat"), new MMOStatCorrector(plugin));
+
+        AuroraQuests.logger().info("Hooked into MythicLib (MMOLib - MMOCore, MMOItems) for stat rewards.");
     }
 }

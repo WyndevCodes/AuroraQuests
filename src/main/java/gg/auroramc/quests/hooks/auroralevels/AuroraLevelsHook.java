@@ -17,6 +17,6 @@ public class AuroraLevelsHook implements Hook {
         ObjectiveFactory.registerObjective(ObjectiveType.GAIN_AURORA_XP, GainAuroraXpObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.GAIN_AURORA_LEVEL, GainAuroraLevelObjective.class);
 
-        AuroraQuests.logger().info("Hooked into AuroraLevels for GAIN_AURORA_XP and GAIN_AURORA_LEVEL task types and for levels_xp reward");
+        AuroraQuests.logger().info("Hooked into AuroraLevels for GAIN_AURORA_XP and GAIN_AURORA_LEVEL objective and for levels_xp reward");
     }
 }

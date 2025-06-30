@@ -13,6 +13,6 @@ public class ShopkeepersHook implements Hook {
         ObjectiveFactory.registerObjective(ObjectiveType.TRADE_SHOPKEEPER, TradeShopkeeperObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.INTERACT_SHOPKEEPER, InteractShopkeeperObjective.class);
 
-        AuroraQuests.logger().info("Hooked into Shopkeepers for INTERACT_SHOPKEEPER and TRADE_SHOPKEEPER task types");
+        AuroraQuests.logger().info("Hooked into Shopkeepers for INTERACT_SHOPKEEPER and TRADE_SHOPKEEPER objectives.");
     }
 }

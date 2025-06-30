@@ -25,7 +25,7 @@ public class LuckPermsHook implements Hook {
 
         lp.getEventBus().subscribe(UserDataRecalculateEvent.class, this::onDataRecalculate);
 
-        AuroraQuests.logger().info("Hooked into LuckPerms for permission rewards and for permission start requirements");
+        AuroraQuests.logger().info("Hooked into LuckPerms for permission rewards and for permission start requirements.");
     }
 
     // Use synchronized since luckperms events are async and it likes to fire the event multiple times at once

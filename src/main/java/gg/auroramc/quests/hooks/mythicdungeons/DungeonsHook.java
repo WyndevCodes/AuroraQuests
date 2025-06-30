@@ -15,6 +15,7 @@ public class DungeonsHook implements Hook, Listener {
     @Override
     public void hook(AuroraQuests plugin) {
         this.plugin = plugin;
+        AuroraQuests.logger().info("Hooked into MythicDungeons for COMPLETE_DUNGEON objective.");
     }
 
     @EventHandler

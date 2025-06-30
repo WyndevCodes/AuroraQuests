@@ -21,6 +21,7 @@ public class SuperiorSkyblockHook implements Hook, Listener {
     @Override
     public void hook(AuroraQuests plugin) {
         this.plugin = plugin;
+        AuroraQuests.logger().info("Hooked SuperiorSkyblock2 for island hooks.");
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

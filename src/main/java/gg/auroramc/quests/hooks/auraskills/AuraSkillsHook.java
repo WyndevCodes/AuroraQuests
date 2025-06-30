@@ -30,6 +30,6 @@ public class AuraSkillsHook implements Hook {
 
         ObjectiveFactory.registerObjective(ObjectiveType.GAIN_AURASKILLS_XP, GainAuraSkillsXpObjective.class);
 
-        AuroraQuests.logger().info("Hooked into AuraSkills for GAIN_AURASKILLS_XP task types and for auraskills_stat/auraskills_xp rewards");
+        AuroraQuests.logger().info("Hooked into AuraSkills for GAIN_AURASKILLS_XP objective and for auraskills_stat/auraskills_xp rewards");
     }
 }

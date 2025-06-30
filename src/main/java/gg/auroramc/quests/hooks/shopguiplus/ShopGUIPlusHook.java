@@ -18,7 +18,7 @@ import org.bukkit.event.Listener;
 public class ShopGUIPlusHook implements Hook, Listener {
     @Override
     public void hook(AuroraQuests plugin) {
-        AuroraQuests.logger().info("Hooked into ShopGUIPlus for BUY_WORTH, BUY and SELL_WORTH, SELL task progression.");
+        AuroraQuests.logger().info("Hooked into ShopGUIPlus for BUY_WORTH, BUY and SELL_WORTH, SELL objectives.");
     }
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
