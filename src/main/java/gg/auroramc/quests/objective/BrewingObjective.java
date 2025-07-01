@@ -4,12 +4,12 @@ import gg.auroramc.aurora.api.util.BukkitPotionType;
 import gg.auroramc.aurora.api.util.Version;
 import gg.auroramc.quests.AuroraQuests;
 import gg.auroramc.quests.api.objective.ObjectiveDefinition;
-import gg.auroramc.quests.api.objective.ObjectiveType;
+import gg.auroramc.quests.api.objective.ObjectiveMeta;
 import gg.auroramc.quests.api.objective.StringTypedObjective;
 import gg.auroramc.quests.api.profile.Profile;
 import gg.auroramc.quests.api.quest.Quest;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.inventory.BrewEvent;
@@ -19,16 +19,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.persistence.PersistentDataType;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 
 public class BrewingObjective extends StringTypedObjective {
-    private static final NamespacedKey potionKey = new NamespacedKey(AuroraQuests.getInstance(), "counted");
     private final Map<Location, Player> brewingStands = new ConcurrentHashMap<>();
 
     public BrewingObjective(Quest quest, ObjectiveDefinition definition, Profile.TaskDataWrapper data) {
@@ -69,28 +68,45 @@ public class BrewingObjective extends StringTypedObjective {
         var player = brewingStands.remove(event.getBlock().getLocation());
         if (player == null) return;
 
-        for (ItemStack item : event.getResults()) {
-            if (item != null && item.hasItemMeta() && item.getItemMeta() instanceof PotionMeta meta) {
-                if (meta.getPersistentDataContainer().has(potionKey, PersistentDataType.BYTE)) {
+        final var currentResults = Stream.of(event.getContents().getStorageContents())
+                .map(stack -> stack == null ? ItemStack.empty() : stack.clone())
+                .toArray(ItemStack[]::new);
+
+        Bukkit.getRegionScheduler().run(AuroraQuests.getInstance(), event.getBlock().getLocation(), (t) -> {
+            final var newResults = Stream.of(event.getContents().getStorageContents())
+                    .map(stack -> stack == null ? ItemStack.empty() : stack)
+                    .toArray(ItemStack[]::new);
+
+            var metas = new ArrayList<ObjectiveMeta>();
+
+            for (int i = 0; i < 3; i++) {
+                if (currentResults[i].equals(newResults[i])) {
+                    // Didn't change, meaning it was already there
                     continue;
                 }
+                var item = newResults[i];
 
-                var type = new BukkitPotionType(meta);
-                var typeString = type.getType().name().toLowerCase(Locale.ROOT);
+                if (!item.isEmpty() && item.hasItemMeta() && item.getItemMeta() instanceof PotionMeta meta) {
+                    var type = new BukkitPotionType(meta);
+                    var typeString = type.getType().name().toLowerCase(Locale.ROOT);
 
-                if (!Version.isAtLeastVersion(20, 2)) {
-                    if (type.isExtended()) {
-                        typeString = "long_" + typeString;
-                    } else if (type.isUpgraded()) {
-                        typeString = "strong_" + typeString;
+                    if (!Version.isAtLeastVersion(20, 2)) {
+                        if (type.isExtended()) {
+                            typeString = "long_" + typeString;
+                        } else if (type.isUpgraded()) {
+                            typeString = "strong_" + typeString;
+                        }
                     }
+
+                    metas.add(meta(event.getBlock().getLocation(), typeString));
                 }
-
-                progress(1, meta(typeString));
-
-                meta.getPersistentDataContainer().set(potionKey, PersistentDataType.BYTE, (byte) 1);
-                item.setItemMeta(meta);
             }
-        }
+
+            player.getScheduler().run(AuroraQuests.getInstance(), (t2) -> {
+                for (var meta : metas) {
+                    progress(1, meta);
+                }
+            }, null);
+        });
     }
 }
