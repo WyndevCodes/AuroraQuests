@@ -1,5 +1,6 @@
 package gg.auroramc.quests.objective;
 
+import gg.auroramc.aurora.api.AuroraAPI;
 import gg.auroramc.aurora.api.util.BukkitPotionType;
 import gg.auroramc.aurora.api.util.Version;
 import gg.auroramc.quests.AuroraQuests;
@@ -63,7 +64,6 @@ public class BrewingObjective extends StringTypedObjective {
         }
     }
 
-
     public void onBrew(BrewEvent event) {
         var player = brewingStands.remove(event.getBlock().getLocation());
         if (player == null) return;
@@ -99,6 +99,8 @@ public class BrewingObjective extends StringTypedObjective {
                     }
 
                     metas.add(meta(event.getBlock().getLocation(), typeString));
+                } else if (!item.isEmpty()) {
+                    metas.add(meta(event.getBlock().getLocation(), AuroraAPI.getItemManager().resolveId(item).toString()));
                 }
             }
 
