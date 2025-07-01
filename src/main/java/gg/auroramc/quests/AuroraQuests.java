@@ -182,7 +182,7 @@ public class AuroraQuests extends JavaPlugin implements Listener {
         ObjectiveFactory.registerObjective(ObjectiveType.BLOCK_SHEAR, BlockShearObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.BLOCK_SHEAR_LOOT, BlockShearLootObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.BREED, BreedingObjective.class);
-        ObjectiveFactory.registerObjective(ObjectiveType.BREW, BreedingObjective.class);
+        ObjectiveFactory.registerObjective(ObjectiveType.BREW, BrewingObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.BUILD, BuildingObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.BLOCK_PLACE, BlockPlaceObjective.class);
         ObjectiveFactory.registerObjective(ObjectiveType.RUN_COMMAND, CommandObjective.class);
