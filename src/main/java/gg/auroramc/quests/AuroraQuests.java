@@ -5,6 +5,7 @@ import gg.auroramc.aurora.api.AuroraLogger;
 import gg.auroramc.aurora.api.command.CommandDispatcher;
 import gg.auroramc.aurora.api.events.user.AuroraUserLoadedEvent;
 import gg.auroramc.aurora.api.user.AuroraUser;
+import gg.auroramc.quests.api.AuroraQuestsPlugin;
 import gg.auroramc.quests.api.data.QuestData;
 import gg.auroramc.quests.api.event.BukkitEventBus;
 import gg.auroramc.quests.api.event.QuestCompletedEvent;
@@ -29,7 +30,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.quartz.SchedulerException;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -40,7 +40,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Getter
-public class AuroraQuests extends JavaPlugin implements Listener {
+public class AuroraQuests extends AuroraQuestsPlugin implements Listener {
     private boolean loaded = false;
 
     @Getter
@@ -55,13 +55,12 @@ public class AuroraQuests extends JavaPlugin implements Listener {
     private CommandManager commandManager;
     private ScheduledTask unlockTask;
 
-    private ProfileManager profileManager;
-    private PoolManager poolManager;
     private BukkitEventBus bukkitEventBus;
 
     @Override
     public void onLoad() {
         instance = this;
+        AuroraQuestsPlugin.instance = this;
         configManager = new ConfigManager(this);
         profileManager = new ProfileManager();
         poolManager = new PoolManager();
