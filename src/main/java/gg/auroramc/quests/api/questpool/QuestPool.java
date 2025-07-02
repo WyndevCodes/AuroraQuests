@@ -139,8 +139,14 @@ public class QuestPool {
     public void startQuests() {
         if (!isUnlocked()) return;
 
-        for (var quest : getActiveQuests()) {
-            quest.start();
+        if (isTimedRandom()) {
+            for (var quest : getActiveQuests()) {
+                quest.start();
+            }
+        } else {
+            for (var quest : quests.values()) {
+                quest.start(false);
+            }
         }
     }
 
