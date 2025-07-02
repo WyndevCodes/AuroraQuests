@@ -130,7 +130,8 @@ public class QuestRollerScheduler {
                 var players = new ArrayList<>(AuroraQuests.getInstance().getProfileManager().getProfiles());
 
                 for (var player : players) {
-                    player.getQuestPool(pool.getId()).reRollQuests(true);
+                    var questPool = player.getQuestPool(pool.getId());
+                    questPool.reRollQuests(true);
                 }
             }, 100, TimeUnit.MILLISECONDS);
         }
