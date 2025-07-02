@@ -7,9 +7,11 @@ import gg.auroramc.quests.AuroraQuests;
 import gg.auroramc.quests.api.data.QuestData;
 import gg.auroramc.quests.api.questpool.QuestPool;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Getter
 public class Profile {
@@ -58,7 +60,8 @@ public class Profile {
             getData().purgeInvalidData(AuroraQuests.getInstance().getPoolManager().getPools());
         }
 
-        AuroraQuests.getInstance().getPoolManager().getRewardAutoCorrector().correctRewards(player);
+        Bukkit.getAsyncScheduler().runDelayed(AuroraQuests.getInstance(),
+                (t) -> AuroraQuests.getInstance().getPoolManager().getRewardAutoCorrector().correctRewards(player), 50, TimeUnit.MILLISECONDS);
     }
 
     public Collection<QuestPool> getQuestPools() {
