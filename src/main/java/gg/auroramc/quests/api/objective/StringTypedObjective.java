@@ -1,6 +1,5 @@
 package gg.auroramc.quests.api.objective;
 
-import gg.auroramc.aurora.api.item.TypeId;
 import gg.auroramc.quests.api.objective.filter.StringTypeFilter;
 import gg.auroramc.quests.api.profile.Profile;
 import gg.auroramc.quests.api.quest.Quest;
@@ -18,7 +17,7 @@ public abstract class StringTypedObjective extends Objective {
 
     protected ObjectiveMeta meta(Location location, String type) {
         var meta = new ObjectiveMeta(data.profile().getPlayer(), location);
-        meta.setVariable("type", TypeId.fromString(type));
+        meta.setVariable("type", type);
         return meta;
     }
 
