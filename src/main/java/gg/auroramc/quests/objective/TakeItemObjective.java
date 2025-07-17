@@ -54,6 +54,8 @@ public class TakeItemObjective extends TypedObjective {
                 }
             }
 
+            if (remainingAmount - amountNeeded <= 0) return;
+
             setProgress(currentAmount + (remainingAmount - amountNeeded));
         } catch (Exception e) {
             AuroraQuests.logger().severe("Failed to take items");
