@@ -256,7 +256,7 @@ public class AuroraQuests extends AuroraQuestsPlugin implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        profileManager.disposeProfile(event.getPlayer().getUniqueId());
+        profileManager.destroyProfile(event.getPlayer().getUniqueId());
         toLoad.remove(event.getPlayer());
     }
 

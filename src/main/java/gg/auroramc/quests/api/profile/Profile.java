@@ -84,9 +84,9 @@ public class Profile {
         return user.getData(QuestData.class);
     }
 
-    public void dispose() {
+    public void destroy() {
         for (var pool : data.values()) {
-            pool.dispose();
+            pool.destroy();
         }
         data.clear();
     }

@@ -19,10 +19,10 @@ public class ProfileManager {
         return profileMap.get(player.getUniqueId());
     }
 
-    public void disposeProfile(UUID uuid) {
+    public void destroyProfile(UUID uuid) {
         var profile = profileMap.remove(uuid);
         if (profile != null) {
-            profile.dispose();
+            profile.destroy();
         }
     }
 
