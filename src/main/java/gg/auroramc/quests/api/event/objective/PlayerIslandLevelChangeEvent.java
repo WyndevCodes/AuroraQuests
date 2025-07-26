@@ -1,6 +1,7 @@
 package gg.auroramc.quests.api.event.objective;
 
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
@@ -23,7 +24,7 @@ public class PlayerIslandLevelChangeEvent extends PlayerEvent {
     private final double level;
 
     public PlayerIslandLevelChangeEvent(@NotNull Player who, double level) {
-        super(who);
+        super(who, !Bukkit.isPrimaryThread());
         this.level = level;
     }
 }

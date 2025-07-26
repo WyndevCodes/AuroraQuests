@@ -2,6 +2,7 @@ package gg.auroramc.quests.api.event.objective;
 
 import gg.auroramc.aurora.api.item.TypeId;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
@@ -25,7 +26,7 @@ public class PlayerInteractNpcEvent extends PlayerEvent {
     private final InteractionType interactionType;
 
     public PlayerInteractNpcEvent(@NotNull Player who, TypeId npc, InteractionType interactionType) {
-        super(who);
+        super(who, !Bukkit.isPrimaryThread());
         this.npc = npc;
         this.interactionType = interactionType;
     }
