@@ -2,15 +2,11 @@ package gg.auroramc.quests.hooks.fancynpcs;
 
 import de.oliver.fancynpcs.api.events.NpcInteractEvent;
 import gg.auroramc.aurora.api.item.TypeId;
-import gg.auroramc.quests.AuroraQuests;
 import gg.auroramc.quests.api.event.objective.PlayerInteractNpcEvent;
-import gg.auroramc.quests.api.objective.ObjectiveType;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-
-import java.util.Map;
 
 public class NpcListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
