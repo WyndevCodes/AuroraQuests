@@ -16,7 +16,7 @@ import gg.auroramc.quests.hooks.shopguiplus.ShopGUIPlusHook;
 import gg.auroramc.quests.hooks.shopkeepers.ShopkeepersHook;
 import gg.auroramc.quests.hooks.superiorskyblock.SuperiorSkyblockHook;
 import gg.auroramc.quests.hooks.worldguard.WorldGuardHook;
-import gg.auroramc.quests.hooks.znpcs.ZnpcPlusHook;
+import gg.auroramc.quests.hooks.znpcsplus.ZnpcPlusHook;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 

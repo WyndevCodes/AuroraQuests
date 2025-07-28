@@ -1,4 +1,4 @@
-package gg.auroramc.quests.hooks.znpcsplus;
+package gg.auroramc.quests.hooks.znpcs;
 
 import gg.auroramc.quests.AuroraQuests;
 import gg.auroramc.quests.hooks.Hook;
