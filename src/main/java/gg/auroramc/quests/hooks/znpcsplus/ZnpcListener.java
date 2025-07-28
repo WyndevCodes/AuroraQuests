@@ -1,4 +1,4 @@
-package gg.auroramc.quests.hooks.znpcs;
+package gg.auroramc.quests.hooks.znpcsplus;
 
 import gg.auroramc.aurora.api.item.TypeId;
 import gg.auroramc.quests.AuroraQuests;
@@ -15,7 +15,7 @@ public class ZnpcListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onNPCRightClick(NPCInteractEvent e) {
 
-        io.github.gonalez.znpcs.npc.NPC npc = e.getNpc();
+        NPC npc = e.getNpc();
         Player player = e.getPlayer();
 
         var id = new TypeId("znpcs", String.valueOf(e.getNpc().getNpcPojo().getId()));

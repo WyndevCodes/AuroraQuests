@@ -41,6 +41,7 @@ repositories {
     maven("https://repo.fancyplugins.de/releases")
     maven("https://repo.tabooproject.org/repository/releases/")
     maven("https://repo.bg-software.com/repository/api/")
+    maven("https://repo.pyr.lol/snapshots")
 }
 
 dependencies {
@@ -64,6 +65,7 @@ dependencies {
     compileOnly(name = "MythicDungeons-2.0.0-SNAPSHOT", group = "net.playavalon", version = "2.0.0-SNAPSHOT")
     compileOnly(name = "znpcs-5.0", group = "io.github.gonalez.znpcs", version = "5.0")
     compileOnly(name = "Shopkeepers-2.23.3", group = "com.nisovin.shopkeepers", version = "2.23.3")
+    compileOnly("lol.pyr:znpcsplus-api:2.1.0-SNAPSHOT")
     compileOnly("de.oliver:FancyNpcs:2.2.2")
     compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-1")
     compileOnly("com.bgsoftware:SuperiorSkyblockAPI:2024.3")
