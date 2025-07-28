@@ -71,7 +71,7 @@ dependencies {
     compileOnly(name = "SuperiorSkyblock2-2025.1", group = "com.bgsoftware", version = "2025.1")
     //compileOnly("com.bgsoftware:SuperiorSkyblockAPI:2025.1")
     compileOnly("lol.pyr:znpcsplus-api:2.1.0-SNAPSHOT")
-    compileOnly("de.oliver:FancyNpcs:2.2.2")
+    compileOnly("de.oliver:FancyNpcs:2.6.0")
     compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-1")
     compileOnly("com.nexomc:nexo:1.8.0")
     compileOnly("su.nightexpress.excellentshop:Core:4.17.4")

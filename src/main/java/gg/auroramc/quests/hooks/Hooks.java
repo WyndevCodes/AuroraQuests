@@ -17,7 +17,7 @@ import gg.auroramc.quests.hooks.shopguiplus.ShopGUIPlusHook;
 import gg.auroramc.quests.hooks.shopkeepers.ShopkeepersHook;
 import gg.auroramc.quests.hooks.superiorskyblock.SuperiorSkyblockHook;
 import gg.auroramc.quests.hooks.worldguard.WorldGuardHook;
-import gg.auroramc.quests.hooks.znpcs.ZnPcsHook;
+import gg.auroramc.quests.hooks.znpcs.ZnpcsHook;
 import gg.auroramc.quests.hooks.znpcsplus.ZnpcPlusHook;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -41,7 +41,7 @@ public enum Hooks {
     ADYESHACH(AdyeshachHook.class, "Adyeshach"),
     SUPERIOR_SKYBLOCK(SuperiorSkyblockHook.class, "SuperiorSkyblock2"),
     FANCY_NPCS(FancyNPCsHook .class, "FancyNpcs"),
-    ZNPCS(ZnPcsHook.class, "ServersNPC"),
+    ZNPCS(ZnpcsHook.class, "ServersNPC"),
     EXCELLENT_SHOP(ExcellentShopHook.class, "ExcellentShop"),
     NEXO(NexoHook.class, "Nexo"),
     ZNPCSPlus(ZnpcPlusHook.class, "ZNPCsPlus");
