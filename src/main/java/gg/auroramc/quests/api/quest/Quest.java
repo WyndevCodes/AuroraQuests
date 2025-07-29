@@ -201,7 +201,7 @@ public class Quest extends EventBus {
         //check if this quest has its own complete message
         if (definition.getQuestCompleteMessage() != null) {
             //separate check - we do NOT want to show the global quest complete message if the quest overrides the enable state
-            if (definition.getQuestCompleteSound().getEnabled()) {
+            if (definition.getQuestCompleteMessage().getEnabled()) {
                 var lines = definition.getQuestCompleteMessage().getMessage();
                 var text = RewardUtil.fillRewardMessage(player, gConfig.getDisplayComponents().get("rewards"), lines, placeholders, rewards.values());
                 player.sendMessage(text);
