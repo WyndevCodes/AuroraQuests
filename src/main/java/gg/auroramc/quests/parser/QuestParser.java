@@ -26,6 +26,8 @@ public class QuestParser {
                 .completedLore(config.getCompletedLore())
                 .lockedLore(config.getLockedLore())
                 .uncompletedLore(config.getUncompletedLore())
+                .questCompleteMessage(config.getQuestCompleteMessage())
+                .questCompleteSound(config.getQuestCompleteSound())
                 .build();
     }
 
