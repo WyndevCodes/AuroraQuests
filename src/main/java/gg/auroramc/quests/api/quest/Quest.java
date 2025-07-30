@@ -204,7 +204,12 @@ public class Quest extends EventBus {
             if (definition.getQuestCompleteMessage().getEnabled()) {
                 var lines = definition.getQuestCompleteMessage().getMessage();
                 var text = RewardUtil.fillRewardMessage(player, gConfig.getDisplayComponents().get("rewards"), lines, placeholders, rewards.values());
+                var delay = definition.getQuestCompleteMessage().getDelay();
+                if (delay > 0) {
+                    Bukkit.getScheduler().runTaskLater(AuroraQuests.getInstance(), () -> player.sendMessage(text), delay);
+                } else {
                 player.sendMessage(text);
+                }
             }
         } else if (gConfig.getQuestCompleteMessage().getEnabled()) {
             var lines = gConfig.getQuestCompleteMessage().getMessage();
@@ -217,7 +222,13 @@ public class Quest extends EventBus {
             //separate check - we do NOT want to play the global quest complete sound if the quest overrides the enable state
             if (definition.getQuestCompleteSound().getEnabled()) {
                 var sound = definition.getQuestCompleteSound();
-                SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch());
+                var delay = definition.getQuestCompleteSound().getDelay();
+                if (delay > 0) {
+                    Bukkit.getScheduler().runTaskLater(AuroraQuests.getInstance(), () ->
+                            SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch()), delay);
+                } else {
+                    SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch());
+                }
             }
         } else if (gConfig.getQuestCompleteSound().getEnabled()) {
             var sound = gConfig.getQuestCompleteSound();

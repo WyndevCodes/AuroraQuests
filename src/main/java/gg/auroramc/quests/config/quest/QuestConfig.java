@@ -42,6 +42,7 @@ public class QuestConfig extends AuroraConfig {
     public static final class LevelUpMessage {
         private Boolean enabled;
         private List<String> message;
+        private int delay;
     }
 
     @Getter
@@ -50,5 +51,6 @@ public class QuestConfig extends AuroraConfig {
         private String sound;
         private Float volume;
         private Float pitch;
+        private int delay;
     }
 }
