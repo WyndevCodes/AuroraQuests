@@ -39,6 +39,8 @@ public class QuestParser {
     }
 
     public static LinkedHashMap<String, Reward> parseRewards(ConfigurationSection config, RewardFactory factory) {
+        if (config == null) return new LinkedHashMap<>(); //allow zero quest rewards
+
         LinkedHashMap<String, Reward> rewards = new LinkedHashMap<>();
 
         for (String key : config.getKeys(false)) {
