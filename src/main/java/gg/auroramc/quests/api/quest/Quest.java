@@ -206,9 +206,9 @@ public class Quest extends EventBus {
                 var text = RewardUtil.fillRewardMessage(player, gConfig.getDisplayComponents().get("rewards"), lines, placeholders, rewards.values());
                 var delay = definition.getQuestCompleteMessage().getDelay();
                 if (delay > 0) {
-                    Bukkit.getScheduler().runTaskLater(AuroraQuests.getInstance(), () -> player.sendMessage(text), delay);
+                    player.getScheduler().runDelayed(AuroraQuests.getInstance(), (task) -> player.sendMessage(text), null, delay);
                 } else {
-                player.sendMessage(text);
+                    player.sendMessage(text);
                 }
             }
         } else if (gConfig.getQuestCompleteMessage().getEnabled()) {
@@ -224,8 +224,8 @@ public class Quest extends EventBus {
                 var sound = definition.getQuestCompleteSound();
                 var delay = definition.getQuestCompleteSound().getDelay();
                 if (delay > 0) {
-                    Bukkit.getScheduler().runTaskLater(AuroraQuests.getInstance(), () ->
-                            SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch()), delay);
+                    player.getScheduler().runDelayed(AuroraQuests.getInstance(), (task) ->
+                            SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch()), null, delay);
                 } else {
                     SoundUtil.playSound(player, sound.getSound(), sound.getVolume(), sound.getPitch());
                 }
